@@ -1,4 +1,25 @@
-# Gaia
+# Agoric Phase 0
+
+TL;DR: Compile using Golang 1.17 with `make build`, and run `build/ag0`.
+
+Phase 0 of the [Agoric blockchain's](https://agoric.com/) mainnet will not have
+the [Agoric SDK](https://github.com/Agoric/agoric-sdk) enabled until governance
+votes to turn it on.  Until then, validators run `ag0` to bootstrap the
+chain with support for Cosmos-layer validation, staking, and governance.
+
+This repository contains sources for the `ag0` program, a fork of the
+[Cosmos Gaia implementation](https://github.com/cosmos/gaia).
+
+NOTE: Remember that `ag0` is the new `gaiad`.  You will still see many
+remaining cosmetic references to `gaiad` in this repo.  
+
+Please refer to https://agoric.com to learn about Agoric and get involved.
+
+*The rest of the original Gaia README follows:*
+
+----
+
+# Original Gaia README
 Gaia is the first implementation of the Cosmos Hub, built using the [Cosmos SDK](https://github.com/cosmos/cosmos-sdk). Gaia and other fully sovereign Cosmos SDK blockchains interact with one another using a protocol called [IBC](https://github.com/cosmos/ibc) that enables Inter-Blockchain Communication.
 
 [![codecov](https://codecov.io/gh/cosmos/gaia/branch/master/graph/badge.svg)](https://codecov.io/gh/cosmos/gaia)
