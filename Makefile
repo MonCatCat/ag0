@@ -116,7 +116,7 @@ build-reproducible: go.sum
 	$(DOCKER) cp -a latest-build:/home/builder/artifacts/ $(CURDIR)/
 
 build-linux: go.sum
-	LEDGER_ENABLED=false GOOS=linux GOARCH=amd64 $(MAKE) build
+	LEDGER_ENABLED=false GOOS=linux GOARCH=amd64 $(MAKE) build BUILDDIR=$(CURDIR)/build.linux
 
 build-contract-tests-hooks:
 	mkdir -p $(BUILDDIR)
@@ -209,9 +209,13 @@ format:
 build-docker-gaiadnode:
 	$(MAKE) -C contrib/testnets/local
 
+localnet-setup:
+	@if ! [ -f build.linux/node0/gaiad/config/genesis.json ]; then docker run --rm -e BINARY=ag0 -v $(CURDIR)/build.linux:/gaiad:Z tendermint/gaiadnode testnet --v 4 -o . --node-daemon-home=gaiad --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
+	jq '. * { app_state: { gov: { voting_params: { voting_period: "240s" } } } }' build.linux/node0/gaiad/config/genesis.json > build.linux/node0/gaiad/config/genesis.json.new
+	for node in build.linux/node*; do cp build.linux/node0/gaiad/config/genesis.json.new $$node/gaiad/config/genesis.json || exit $$?; done
+
 # Run a 4-node testnet locally
-localnet-start: build-linux localnet-stop
-	@if ! [ -f build/node0/gaiad/config/genesis.json ]; then docker run --rm -e BINARY=ag0 -v $(CURDIR)/build:/gaiad:Z tendermint/gaiadnode testnet --v 4 -o . --node-daemon-home=gaiad --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
+localnet-start: build-linux localnet-stop localnet-setup
 	docker-compose up -d
 
 # Stop testnet
