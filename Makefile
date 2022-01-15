@@ -211,6 +211,7 @@ build-docker-gaiadnode:
 
 localnet-setup:
 	@if ! [ -f build.linux/node0/gaiad/config/genesis.json ]; then docker run --rm -e BINARY=ag0 -v $(CURDIR)/build.linux:/gaiad:Z tendermint/gaiadnode testnet --v 4 -o . --node-daemon-home=gaiad --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
+	cp -a build.linux/node[1-9]/gaiad/keyring-test/* build.linux/node0/gaiad/keyring-test/
 	jq '. * { app_state: { gov: { voting_params: { voting_period: "240s" } } } }' build.linux/node0/gaiad/config/genesis.json > build.linux/node0/gaiad/config/genesis.json.new
 	for node in build.linux/node*; do cp build.linux/node0/gaiad/config/genesis.json.new $$node/gaiad/config/genesis.json || exit $$?; done
 
