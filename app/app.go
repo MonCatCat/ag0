@@ -570,7 +570,7 @@ func NewGaiaApp(
 	)
 
 	app.UpgradeKeeper.SetUpgradeHandler(
-		"agoric-3.2",
+		"agoric-upgrade-5",
 		func(ctx sdk.Context, plan upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
 			return vm, nil
 		},
