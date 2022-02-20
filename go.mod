@@ -120,9 +120,8 @@ require (
 	nhooyr.io/websocket v1.8.6 // indirect
 )
 
-
 replace (
-  github.com/cosmos/cosmos-sdk => github.com/agoric-labs/cosmos-sdk v0.44.5-alpha.agoric.ag0.5
+	github.com/cosmos/cosmos-sdk => github.com/agoric-labs/cosmos-sdk v0.44.5-alpha.agoric.ag0.5
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )
