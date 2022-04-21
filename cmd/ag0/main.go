@@ -7,8 +7,8 @@ import (
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	app "github.com/cosmos/gaia/v6/app"
-	"github.com/cosmos/gaia/v6/cmd/gaiad/cmd"
+	app "github.com/MonCatCat/ag0/v6/app"
+	"github.com/MonCatCat/ag0/v6/cmd/gaiad/cmd"
 )
 
 const (

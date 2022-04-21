@@ -31,8 +31,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	gaia "github.com/cosmos/gaia/v6/app"
-	"github.com/cosmos/gaia/v6/app/params"
+	gaia "github.com/MonCatCat/ag0/v6/app"
+	"github.com/MonCatCat/ag0/v6/app/params"
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the
