@@ -570,8 +570,25 @@ func NewGaiaApp(
 	)
 
 	app.UpgradeKeeper.SetUpgradeHandler(
-		"agoric-upgrade-5",
+		"agoric-upgrade-6",
 		func(ctx sdk.Context, plan upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
+			if baseappSubspace, ok := app.ParamsKeeper.GetSubspace(baseapp.Paramspace); ok {
+				// During debugging, it was discovered that by not having a MaxGas set, the InfiniteGasMeter
+				// was being used to evaluate gas, and that can have undesirable effects
+				// This parameter is being changed in this upgrade migration so that
+				// we only need to have one proposal (upgrade), vs two (upgrade, param change)
+
+				var blockParam abci.BlockParams
+				baseappSubspace.Get(ctx, baseapp.ParamStoreKeyBlockParams, &blockParam)
+				ctx.Logger().Info("Pre-upgrade params", "subspace", baseapp.Paramspace, "param", baseapp.ParamStoreKeyBlockParams, "max_bytes", blockParam.MaxBytes, "max_gas", blockParam.MaxGas)
+
+				// Set Max Gas to 120000000.  Value initially from osmosis
+				blockParam.MaxGas = 120000000
+
+				baseappSubspace.Set(ctx, baseapp.ParamStoreKeyBlockParams, blockParam)
+
+				ctx.Logger().Info("Post-upgrade params", "subspace", baseapp.Paramspace, "param", baseapp.ParamStoreKeyBlockParams, "max_bytes", blockParam.MaxBytes, "max_gas", blockParam.MaxGas)
+			}
 			return vm, nil
 		},
 	)
