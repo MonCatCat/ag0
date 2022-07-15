@@ -191,7 +191,7 @@ benchmark:
 ###                                Linting                                  ###
 ###############################################################################
 
-golangci_lint_cmd=go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.46.2
+golangci_lint_cmd=go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.42.1
 
 lint:
 	$(golangci_lint_cmd) run --out-format=tab $(GIT_DIFF)
