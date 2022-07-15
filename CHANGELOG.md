@@ -37,6 +37,11 @@ Ref: https://keepachangelog.com/en/1.0.0/
 ## [Unreleased]
 
 
+## [agoric-upgrade-6] - 2022-07-15
+
+* Incorporate `ante.NewSetUpContextDecorator()` into ante handlers to reset gas meter for correct calculation
+* Implement update handler for `agoric-upgrade-6` that sets MaxGas to 120000000
+
 ## [v6.0.0] - 2021-09-17
 
  * (gaia) Bump [Liquidity](https://github.com/gravity-devs/liquidity) module to [v1.4.0](https://github.com/Gravity-Devs/liquidity/releases/tag/v1.4.0). See the [CHANGELOG.md](https://github.com/Gravity-Devs/liquidity/blob/v1.4.0/CHANGELOG.md#v130---2021-08-31) for details. This contains consensus breaking changes.
