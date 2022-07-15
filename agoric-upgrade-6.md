@@ -16,10 +16,9 @@ Prerequisites:
 ### Run:
 
 ```sh
-basebranch=agoric-upgrade-5
 baseupgradename=agoric-upgrade-5
 toupgradename=agoric-upgrade-6
-git checkout $basebranch
+git checkout tags/$baseupgradename
 rm -rf build.linux
 make build build-linux
 make localnet-start
@@ -91,7 +90,7 @@ watch ./check-prop-status.sh $proposal ./ag0.sh
 
 ```sh
 make localnet-stop
-git checkout $newupgrade
+git checkout tags/$toupgradename
 
 #juggle out the build_dir due to go trying to read files owned by root
 mv build.linux _build.linux
