@@ -11,7 +11,7 @@ This repository contains sources for the `ag0` program, a fork of the
 [Cosmos Gaia implementation](https://github.com/cosmos/gaia).
 
 NOTE: Remember that `ag0` is the new `gaiad`.  You will still see many
-remaining cosmetic references to `gaiad` in this repo.  
+remaining cosmetic references to `gaiad` in this repo.
 
 Please refer to https://agoric.com to learn about Agoric and get involved.
 

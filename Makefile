@@ -208,8 +208,6 @@ docker-build-hermes:
 ###                                Linting                                  ###
 ###############################################################################
 
-golangci_lint_cmd=go run github.com/golangci/golangci-lint/cmd/golangci-lint@v1.46.2
-
 lint:
 	@echo "--> Running linter"
 	@go run github.com/golangci/golangci-lint/cmd/golangci-lint run --timeout=10m
