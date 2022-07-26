@@ -93,6 +93,7 @@ import (
 	ibchost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
 	"github.com/gorilla/mux"
+
 	// "github.com/gravity-devs/liquidity/x/liquidity"
 	// liquiditykeeper "github.com/gravity-devs/liquidity/x/liquidity/keeper"
 	// liquiditytypes "github.com/gravity-devs/liquidity/x/liquidity/types"
@@ -201,14 +202,14 @@ type GaiaApp struct { // nolint: golint
 	UpgradeKeeper    upgradekeeper.Keeper
 	ParamsKeeper     paramskeeper.Keeper
 	// IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
-	IBCKeeper       *ibckeeper.Keeper
-	ICAHostKeeper   icahostkeeper.Keeper
-	EvidenceKeeper  evidencekeeper.Keeper
-	TransferKeeper  ibctransferkeeper.Keeper
-	FeeGrantKeeper  feegrantkeeper.Keeper
-	AuthzKeeper     authzkeeper.Keeper
+	IBCKeeper      *ibckeeper.Keeper
+	ICAHostKeeper  icahostkeeper.Keeper
+	EvidenceKeeper evidencekeeper.Keeper
+	TransferKeeper ibctransferkeeper.Keeper
+	FeeGrantKeeper feegrantkeeper.Keeper
+	AuthzKeeper    authzkeeper.Keeper
 	// LiquidityKeeper liquiditykeeper.Keeper
-	RouterKeeper    routerkeeper.Keeper
+	RouterKeeper routerkeeper.Keeper
 
 	// make scoped keepers public for test purposes
 	ScopedIBCKeeper      capabilitykeeper.ScopedKeeper
@@ -258,7 +259,7 @@ func NewGaiaApp(
 		authtypes.StoreKey, banktypes.StoreKey, stakingtypes.StoreKey,
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
-		evidencetypes.StoreKey, /* liquiditytypes.StoreKey, */ ibctransfertypes.StoreKey,
+		evidencetypes.StoreKey /* liquiditytypes.StoreKey, */, ibctransfertypes.StoreKey,
 		capabilitytypes.StoreKey, feegrant.StoreKey, authzkeeper.StoreKey, routertypes.StoreKey, icahosttypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)

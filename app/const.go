@@ -1,6 +1,5 @@
 package gaia
 
-// nolint: gosec
 const (
 	appName     = "GaiaApp"
 	upgradeName = "v7-Theta"
