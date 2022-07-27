@@ -1,4 +1,5 @@
 # Simple usage with a mounted data directory:
+# NOTE: Need to update these instructions for ag0
 # > docker build -t gaia .
 # > docker run -it -p 46657:46657 -p 46656:46656 -v ~/.gaia:/root/.gaia gaia gaiad init
 # > docker run -it -p 46657:46657 -p 46656:46656 -v ~/.gaia:/root/.gaia gaia gaiad start
@@ -25,7 +26,7 @@ RUN apk add --update ca-certificates
 WORKDIR /root
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/bin/gaiad /usr/bin/gaiad
+COPY --from=build-env /go/bin/ag0 /usr/bin/ag0
 
 COPY ./contrib/single-node.sh .
 
