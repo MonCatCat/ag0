@@ -2,7 +2,7 @@ package gaia
 
 const (
 	appName     = "GaiaApp"
-	upgradeName = "v7-Theta"
+	upgradeName = "agoric-upgrade-7"
 
 	authzMsgExec                        = "/cosmos.authz.v1beta1.MsgExec"
 	authzMsgGrant                       = "/cosmos.authz.v1beta1.MsgGrant"
