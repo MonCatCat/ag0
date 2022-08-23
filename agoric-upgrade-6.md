@@ -57,14 +57,14 @@ Note: In the bugged version, in a block with multiple tx, the gas_used is cumula
   gas_used: "494031"
   gas_used: "578051"
 ```
-After this update, the gas for the load transactions above should not be cumulatvie, and relatively similar for each transaction.
+After this update, the gas for the load transactions above should not be cumulative, and relatively similar for each transaction.
 
 ### Propose software upgrade governance:
 
 ```sh
 latest_height=$(./ag0.sh status | jq -r .SyncInfo.latest_block_height)
-height=$(( $latest_height + $voting_period_s / 4 ))
 voting_period_s=240
+height=$(( $latest_height + $voting_period_s / 4 ))
 ./ag0.sh tx gov submit-proposal software-upgrade $toupgradename --upgrade-height="$height" \
   --title="Upgrade to ${toupgradename}" --description="Fixes gas calculation" \
   --from=node0 --chain-id="$chainid" -bblock --yes
