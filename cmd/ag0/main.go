@@ -7,9 +7,9 @@ import (
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/cosmos/gaia/v7/agoric"
-	app "github.com/cosmos/gaia/v7/app"
-	"github.com/cosmos/gaia/v7/cmd/gaiad/cmd"
+	"github.com/MonCatCat/ag0/v7/agoric"
+	app "github.com/MonCatCat/ag0/v7/app"
+	"github.com/MonCatCat/ag0/v7/cmd/gaiad/cmd"
 )
 
 func main() {
